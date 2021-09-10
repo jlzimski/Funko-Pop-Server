@@ -2,9 +2,12 @@ const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
 
-const controllers = require("./Controllers")
+const controllers = require("./Controllers");
+
+app.use(Express.json());
 
 app.use("/collection", controllers.collectionController);
+app.use("/user", controllers.userController);
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
