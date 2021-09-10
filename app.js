@@ -7,8 +7,10 @@ const controllers = require("./Controllers");
 
 app.use(Express.json());
 
-app.use("/collection", controllers.collectionController);
 app.use("/user", controllers.userController);
+// app.use(require("./Middleware/validate-jwt"));
+app.use("/collection", controllers.collectionController);
+
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
