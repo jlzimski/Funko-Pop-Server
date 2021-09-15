@@ -12,14 +12,14 @@ router.get('/practice', validateJWT, (req, res) => {
 // ==============================
 router.post("/create", validateJWT, async (req, res) => {
     const { name, description } = req.body.collection;
-    const { id } = req.user;
-    const { id } = req.item;
+    const { user_id } = req.user;
+    const { item_id } = req.item;
     const collection = {
         name,
-        user: id,
-        item: id,
+        user_id: id,
+        item_id: id,
         description
-    }
+    };
     try {
         const newCollection = await CollectionModel.create(collection);
         res.status(200).json(newCollection);
