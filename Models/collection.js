@@ -6,13 +6,13 @@ const Collection = db.define("collection", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    user: {
+    user_id: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    item: {
+    item_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     description: {
         type: DataTypes.STRING,
