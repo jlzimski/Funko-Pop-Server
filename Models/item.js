@@ -6,17 +6,17 @@ const Item = db.define("item", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    image: {
+    title: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    title: {
+    image: {
         type: DataTypes.STRING,
         allowNull: false
     },
     series: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
 });
 
