@@ -6,7 +6,7 @@ const Collection = db.define("collection", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    user_id: {
+    owner: {
         type: DataTypes.INTEGER,
         allowNull: false
     },

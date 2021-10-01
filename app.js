@@ -9,9 +9,11 @@ const controllers = require("./Controllers");
 
 app.use(Express.json());
 
+app.use("/item", controllers.itemController);
 app.use("/user", controllers.userController);
-// app.use(require("./Middleware/validate-jwt"));
 app.use("/collection", controllers.collectionController);
+// app.use(require("./Middleware/validate-jwt"));
+
 
 
 dbConnection.authenticate()

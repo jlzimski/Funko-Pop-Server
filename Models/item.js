@@ -18,6 +18,10 @@ const Item = db.define("item", {
         type: DataTypes.STRING,
         allowNull: true
     },
+    alpha: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 });
 
 module.exports = Item;

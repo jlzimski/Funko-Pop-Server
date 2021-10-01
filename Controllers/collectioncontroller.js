@@ -3,9 +3,9 @@ const router = Express.Router();
 // const validateJWT = require("../Middleware/validate-jwt");
 const { CollectionModel } = require("../Models");
 
-router.get('/practice', (req, res) => {
-    res.send('Hey!! This is a practice route!')
-});
+// router.get('/practice', (req, res) => {
+//     res.send('Hey!! This is a practice route!')
+// });
 
 // ==============================
 //     Collection Create
@@ -15,7 +15,7 @@ router.post("/create", async (req, res) => {
     const { id } = req.user;
     const createCollection = {
         name,
-        user_id: id,
+        owner: id,
         item_id,
         description
     };

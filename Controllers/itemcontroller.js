@@ -1,12 +1,14 @@
 const Express = require("express");
 const router = Express.Router();
-// const validateJWT = require("../Middleware/validate-jwt");
 const { ItemModel } = require("../Models");
 
-// router.get('/practice', validateJWT, (req, res) => {
-//     res.send('Hey!! This is a practice route!')
-// });
+router.get('/practice', (req, res) => {
+    res.send('Hey!! This is a practice route!')
+});
 
+router.get('/about', (req, res) => {
+    res.send('This is the about route!')
+});
 
 // ===============================
 //      Get All Items (to fill scrolling list)
@@ -16,38 +18,38 @@ router.get("/", async (req, res) => {
         const results = await ItemModel.findAll();
         res.status(200).json(results);
     } catch (err) {
-        res.status(500).json({ error });
+        res.status(500).json({ error: err });
     }
 });
 // ===============================
 //      Get Item by Id (to view within a collection/wishlist-item within gallery)
 //      -to update a collection/wishlist
 // ===============================
-router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-    try {
-        const results = await ItemModel.findAll({
-            where: { id: id }
-        });
-        res.status(200).json(results);
-    } catch (err) {
-        res.status(500).json({ error: err });
-    }
-});
+// router.get("/:id", async (req, res) => {
+//     const { id } = req.params;
+//     try {
+//         const itemById = await ItemModel.findAll({
+//             where: { id: id }
+//         });
+//         res.status(200).json(itemById);
+//     } catch (err) {
+//         res.status(500).json({ error: err });
+//     }
+// });
 // ===============================
 //      Get Item by Title (Search Bar)
 // ===============================
-router.get("/:title", async (req, res) => {
-    const { name } = req.params;
-    try {
-        const results = await ItemModel.findAll({
-            where: { id: id }
-        });
-        res.status(200).json(results);
-    } catch (err) {
-        res.status(500).json({ error: err });
-    }
-});
+// router.get("/:title", async (req, res) => {
+//     const { name } = req.params;
+//     try {
+//         const results = await ItemModel.findAll({
+//             where: { id: id }
+//         });
+//         res.status(200).json(results);
+//     } catch (err) {
+//         res.status(500).json({ error: err });
+//     }
+// });
 // ===============================
 //      Update ???? 
 // ===============================
@@ -98,8 +100,5 @@ router.get("/:title", async (req, res) => {
 // });
 
 
-router.get('/about', (req, res) => {
-    res.send('This is the about route!')
-});
 
 module.exports = router;

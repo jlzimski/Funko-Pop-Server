@@ -6,7 +6,7 @@ const Wishlist = db.define("wishlist", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    user_id: {
+    owner: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
