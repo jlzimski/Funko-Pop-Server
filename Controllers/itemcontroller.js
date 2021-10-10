@@ -10,13 +10,36 @@ router.get('/about', (req, res) => {
     res.send('This is the about route!')
 });
 
-// ===============================
-//      Get All Items (to fill scrolling list)
-// ===============================
-router.get("/", async (req, res) => {
+//============================================
+//      Add Item to Database (Admin only)
+//============================================
+router.post("/add", async (req, res) => {
+    const { handle, title, image, series, alpha } = req.body.Item;
+    const itemEntry = {
+        handle,
+        title,
+        image,
+        series,
+        alpha
+    }
     try {
-        const results = await ItemModel.findAll();
-        res.status(200).json(results);
+        const newItem = await ItemModel.create(itemEntry);
+        res.send('Adding an item');
+        res.status(200).json(newItem);
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
+});
+// ====================================================
+//      Get Items by Alpha (to fill browsing list)
+// ====================================================
+router.get("/:alpha", async (req, res) => {
+    const { alpha } = req.params;
+    try {
+        const byAlpha = await ItemModel.findAll({
+            where: { alpha: alpha }
+        });
+        res.status(200).json(byAlpha);
     } catch (err) {
         res.status(500).json({ error: err });
     }
@@ -25,13 +48,12 @@ router.get("/", async (req, res) => {
 //      Get Item by Id (to view within a collection/wishlist-item within gallery)
 //      -to update a collection/wishlist
 // ===============================
-// router.get("/:id", async (req, res) => {
-//     const { id } = req.params;
+// router.get("/:#", async (req, res) => {
 //     try {
-//         const itemById = await ItemModel.findAll({
-//             where: { id: id }
+//         const otherItems = await ItemModel.findAll({
+//             where: { alpha: "#" }
 //         });
-//         res.status(200).json(itemById);
+//         res.status(200).json(otherItems);
 //     } catch (err) {
 //         res.status(500).json({ error: err });
 //     }

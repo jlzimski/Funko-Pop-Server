@@ -15,8 +15,7 @@ const Item = db.define("item", {
         allowNull: false
     },
     series: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.STRING
     },
     alpha: {
         type: DataTypes.STRING,
