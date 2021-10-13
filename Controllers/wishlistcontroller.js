@@ -1,7 +1,7 @@
 const Express = require("express");
 const router = Express.Router();
-const validateJWT = require("../Middleware/validate-jwt");
-const { WishlistModel } = require("../Models");
+const validateJWT = require("../middleware/validate-jwt");
+const { WishlistModel } = require("../models");
 
 // ==============================
 //     Wishlist Create

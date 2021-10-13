@@ -1,6 +1,6 @@
 const Express = require("express");
 const router = Express.Router();
-const { ItemModel } = require("../Models");
+const { ItemModel } = require("../models");
 
 router.get('/practice', (req, res) => {
     res.send('Hey!! This is a practice route!')
@@ -30,6 +30,24 @@ router.post("/add", async (req, res) => {
         res.status(500).json({ error: err });
     }
 });
+//============================================
+//      Delete Item from Database (Admin only)
+//============================================
+router.delete("/delete/:id", async (req, res) => {
+    const adminId = req.user.id;
+    const itemId = req.item.id;
+    try {
+        const query = {
+            where: {
+                id: itemId,
+            }
+        };
+        await ItemModel.destroy(query);
+        res.status(200).json({ message: "Item removed" });
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
+});
 // ====================================================
 //      Get Items by Alpha (to fill browsing list)
 // ====================================================
@@ -45,29 +63,15 @@ router.get("/:alpha", async (req, res) => {
     }
 });
 // ===============================
-//      Get Item by Id (to view within a collection/wishlist-item within gallery)
-//      -to update a collection/wishlist
-// ===============================
-// router.get("/:#", async (req, res) => {
-//     try {
-//         const otherItems = await ItemModel.findAll({
-//             where: { alpha: "#" }
-//         });
-//         res.status(200).json(otherItems);
-//     } catch (err) {
-//         res.status(500).json({ error: err });
-//     }
-// });
-// ===============================
 //      Get Item by Title (Search Bar)
 // ===============================
 // router.get("/:title", async (req, res) => {
-//     const { name } = req.params;
+//     const { title } = req.params;
 //     try {
-//         const results = await ItemModel.findAll({
-//             where: { id: id }
+//         const search = await ItemModel.findAll({
+//             where: { title: title }
 //         });
-//         res.status(200).json(results);
+//         res.status(200).json(search);
 //     } catch (err) {
 //         res.status(500).json({ error: err });
 //     }

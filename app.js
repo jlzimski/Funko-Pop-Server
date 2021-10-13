@@ -3,9 +3,9 @@ const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
 
-app.use(require('./Middleware/headers'));
+app.use(require('./middleware/headers'));
 
-const controllers = require("./Controllers");
+const controllers = require("./controllers");
 
 app.use(Express.json());
 
