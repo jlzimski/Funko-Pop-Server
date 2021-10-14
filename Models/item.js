@@ -11,15 +11,11 @@ const Item = db.define("item", {
         allowNull: false
     },
     image: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     series: {
         type: DataTypes.STRING
-    },
-    alpha: {
-        type: DataTypes.STRING,
-        allowNull: false
     }
 });
 

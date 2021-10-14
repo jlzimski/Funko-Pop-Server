@@ -14,13 +14,12 @@ router.get('/about', (req, res) => {
 //      Add Item to Database (Admin only)
 //============================================
 router.post("/add", async (req, res) => {
-    const { handle, title, image, series, alpha } = req.body.Item;
+    const { handle, title, image, series } = req.body.Item;
     const itemEntry = {
         handle,
         title,
         image,
         series,
-        alpha
     }
     try {
         const newItem = await ItemModel.create(itemEntry);
@@ -33,35 +32,35 @@ router.post("/add", async (req, res) => {
 //============================================
 //      Delete Item from Database (Admin only)
 //============================================
-router.delete("/delete/:id", async (req, res) => {
-    const adminId = req.user.id;
-    const itemId = req.item.id;
-    try {
-        const query = {
-            where: {
-                id: itemId,
-            }
-        };
-        await ItemModel.destroy(query);
-        res.status(200).json({ message: "Item removed" });
-    } catch (err) {
-        res.status(500).json({ error: err });
-    }
-});
+// router.delete("/delete/:id", async (req, res) => {
+//     const adminId = req.user.id;
+//     const itemId = req.item.id;
+//     try {
+//         const query = {
+//             where: {
+//                 id: itemId,
+//             }
+//         };
+//         await ItemModel.destroy(query);
+//         res.status(200).json({ message: "Item removed" });
+//     } catch (err) {
+//         res.status(500).json({ error: err });
+//     }
+// });
 // ====================================================
 //      Get Items by Alpha (to fill browsing list)
 // ====================================================
-router.get("/:alpha", async (req, res) => {
-    const { alpha } = req.params;
-    try {
-        const byAlpha = await ItemModel.findAll({
-            where: { alpha: alpha }
-        });
-        res.status(200).json(byAlpha);
-    } catch (err) {
-        res.status(500).json({ error: err });
-    }
-});
+// router.get("/:alpha", async (req, res) => {
+//     const { alpha } = req.params;
+//     try {
+//         const byAlpha = await ItemModel.findAll({
+//             where: { alpha: alpha }
+//         });
+//         res.status(200).json(byAlpha);
+//     } catch (err) {
+//         res.status(500).json({ error: err });
+//     }
+// });
 // ===============================
 //      Get Item by Title (Search Bar)
 // ===============================
