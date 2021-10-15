@@ -29,6 +29,17 @@ router.post("/add", async (req, res) => {
         res.status(500).json({ error: err });
     }
 });
+//===========================================
+//      Get All Items
+//===========================================
+router.get("/", async (req, res) => {
+    try {
+        const allItems = await ItemModel.findAll({ limit: 10000 });
+        res.status(200).json(allItems);
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
+});
 //============================================
 //      Delete Item from Database (Admin only)
 //============================================
