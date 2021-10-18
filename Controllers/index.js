@@ -1,6 +1,6 @@
 module.exports = {
-    userController: require('./userController'),
-    collectionController: require('./collectionController'),
+    userController: require('./usercontroller'),
+    collectionController: require('./collectioncontroller'),
     wishlistController: require('./wishlistcontroller'),
     itemController: require('./itemcontroller')
 };

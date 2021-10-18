@@ -58,20 +58,6 @@ router.get("/", async (req, res) => {
 //         res.status(500).json({ error: err });
 //     }
 // });
-// ====================================================
-//      Get Items by Alpha (to fill browsing list)
-// ====================================================
-// router.get("/:alpha", async (req, res) => {
-//     const { alpha } = req.params;
-//     try {
-//         const byAlpha = await ItemModel.findAll({
-//             where: { alpha: alpha }
-//         });
-//         res.status(200).json(byAlpha);
-//     } catch (err) {
-//         res.status(500).json({ error: err });
-//     }
-// });
 // ===============================
 //      Get Item by Title (Search Bar)
 // ===============================
@@ -111,25 +97,16 @@ router.get("/", async (req, res) => {
 //         res.status(500).json({ error: err });
 //     }
 // });
-// ===============================
-//      Delete a Item from a Collection/Wishlist
-// ===============================
-// router.delete("/delete/:id", validateJWT, async (req, res) => {
-//     const itemId = req.params.id;
-//     const collectionId = req.collection.id;
-//     const wishlistId = req.wishlist.id;
-
+// ====================================================
+//      Get Items by Alpha (to fill browsing list)
+// ====================================================
+// router.get("/:alpha", async (req, res) => {
+//     const { alpha } = req.params;
 //     try {
-//         const query = { // if else?????
-//             where: {
-//                 id: itemId,
-//                 collection: collectionId,
-//                 wishlistId: wishlistId
-//             }
-//         };
-
-//         await ItemModel.destroy(query);
-//         res.status(200).json({ message: "Item Deleted" });
+//         const byAlpha = await ItemModel.findAll({
+//             where: { alpha: alpha }
+//         });
+//         res.status(200).json(byAlpha);
 //     } catch (err) {
 //         res.status(500).json({ error: err });
 //     }
