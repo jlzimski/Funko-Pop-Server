@@ -12,8 +12,11 @@ app.use(Express.json());
 app.use("/item", controllers.itemController);
 app.use("/user", controllers.userController);
 app.use("/collection", controllers.collectionController);
-// app.use(require("./Middleware/validate-jwt"));
+app.use("/wishlist", controllers.wishlistController);
 
+// app.listen(process.env.PORT, () => {
+//     console.log(`[Server]: App is listening on 3000.`);
+// });
 
 
 dbConnection.authenticate()
