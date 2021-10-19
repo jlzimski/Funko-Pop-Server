@@ -35,7 +35,7 @@ const DefineCollection = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        description: {
+        description: { // itemId????????
             type: DataTypes.TEXT,
             allowNull: true,
         },
