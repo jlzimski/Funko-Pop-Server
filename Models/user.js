@@ -16,10 +16,10 @@ const User = db.define("user", {
         allowNull: false,
         unique: true,
     },
-    // isAdmin: {
-    //     type: DataTypes.BOOLEAN,
-    //     defaultValue: false
-    // }
+    isAdmin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    }
 });
 
 module.exports = User;
