@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const db = require("../db");
 
 const Collection = db.define("collection", {
-    name: {
+    collection_name: {
         type: DataTypes.STRING,
         allowNull: false
     },

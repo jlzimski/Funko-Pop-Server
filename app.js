@@ -12,8 +12,7 @@ app.use(Express.json());
 app.use("/item", controllers.itemController);
 app.use("/user", controllers.userController);
 app.use("/collection", controllers.collectionController);
-// app.use(require("./Middleware/validate-jwt"));
-
+app.use("/wishlist", controllers.wishlistController);
 
 
 dbConnection.authenticate()
